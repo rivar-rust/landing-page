@@ -27,47 +27,47 @@ export default function TerminalIDE() {
   }
 
   const commands = [
-    "hexa-cli init --ai-powered",
-    "hexa-cli generate --model gpt-5 --context full",
-    "hexa-cli review --agent claude-4 --interactive",
-    "hexa-cli deploy --env production --optimize",
+    "rivar init --template risk-model",
+    "rivar calculate --VaR --confidence 0.95",
+    "rivar backtest --strategy my-strategy",
+    "rivar analyze --portfolio holdings.json",
   ]
 
   const terminalSequences = [
     {
-      command: "hexa-cli init --ai-powered",
+      command: "rivar init --template risk-model",
       outputs: [
-        "🚀 Initializing HEXA CLI project...",
-        "📦 Installing dependencies...",
-        "🤖 Configuring AI models...",
+        "🚀 Initializing RiVaR project...",
+        "📦 Loading risk models...",
+        "⚙️ Configuring portfolio parameters...",
         "✅ Project initialized successfully!",
       ],
     },
     {
-      command: "hexa-cli generate --model gpt-5 --context full",
+      command: "rivar calculate --VaR --confidence 0.95",
       outputs: [
-        "🧠 Loading GPT-5 model...",
-        "📊 Analyzing codebase context...",
-        "⚡ Generating optimized code...",
-        "✨ Code generation complete!",
+        "📊 Loading historical data...",
+        "🔢 Computing variance-covariance matrix...",
+        "⚡ Calculating Value at Risk...",
+        "✨ VaR: $2.45M (95% confidence)",
       ],
     },
     {
-      command: "hexa-cli review --agent claude-4 --interactive",
+      command: "rivar backtest --strategy my-strategy",
       outputs: [
-        "👁️  Starting interactive review...",
-        "🔍 Claude-4 analyzing changes...",
-        "💡 Suggesting improvements...",
-        "🎯 Review session active!",
+        "📈 Loading historical prices...",
+        "🔍 Running backtest simulation...",
+        "📉 Computing performance metrics...",
+        "🎯 Sharpe Ratio: 1.82 | Max Drawdown: -12.3%",
       ],
     },
     {
-      command: "hexa-cli deploy --env production --optimize",
+      command: "rivar analyze --portfolio holdings.json",
       outputs: [
-        "🏗️  Building for production...",
-        "⚡ Optimizing bundle size...",
-        "🌐 Deploying to production...",
-        "🎉 Deployment successful!",
+        "💼 Analyzing portfolio composition...",
+        "📊 Computing factor exposures...",
+        "⚠️ Identifying risk concentrations...",
+        "✨ Risk report generated!",
       ],
     },
   ]
@@ -80,7 +80,7 @@ export default function TerminalIDE() {
 ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝    ╚═════╝╚══════╝╚═╝`
 
   useEffect(() => {
-    const chars = "HEXACLI01010101ABCDEF█▓▒░▄▀■□▪▫".split("")
+    const chars = "RIVAR01010101VaR█▓▒░▄▀■□▪▫".split("")
     const newMatrixChars = Array.from({ length: 100 }, () => chars[Math.floor(Math.random() * chars.length)])
     setMatrixChars(newMatrixChars)
 
@@ -174,15 +174,9 @@ export default function TerminalIDE() {
       <nav className="border-b border-gray-800 bg-gray-950/95 backdrop-blur-sm p-4 relative z-10 sticky top-0">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-3">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 bg-red-500 hover:bg-red-400 transition-colors cursor-pointer"></div>
-                <div className="w-3 h-3 bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer"></div>
-                <div className="w-3 h-3 bg-green-500 hover:bg-green-400 transition-colors cursor-pointer"></div>
-              </div>
+              <div className="flex items-center gap-3">
               <div className="flex items-center gap-2">
-                <span className="text-white font-bold text-lg">HEXA</span>
-                <span className="text-gray-400 text-sm">CLI</span>
+                <span className="text-white font-bold text-lg">RiVaR</span>
               </div>
             </div>
 
@@ -198,7 +192,7 @@ export default function TerminalIDE() {
                 href="#models"
                 className="text-gray-400 hover:text-white transition-colors cursor-pointer relative group"
               >
-                <span>AI Models</span>
+                <span>Risk Models</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></div>
               </a>
               <a
@@ -209,7 +203,9 @@ export default function TerminalIDE() {
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></div>
               </a>
               <a
-                href="/docs"
+                href="https://docs.rivar.dev"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-400 hover:text-white transition-colors cursor-pointer relative group"
               >
                 <span>Docs</span>
@@ -221,12 +217,12 @@ export default function TerminalIDE() {
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-2 text-gray-500 text-xs">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span>v2.1.0</span>
+              <span>v0.1.0</span>
             </div>
 
             <div
               className="group relative cursor-pointer"
-              onClick={() => copyToClipboard("npm install -g hexa-cli", "nav-install")}
+              onClick={() => copyToClipboard("cargo install rivar", "nav-install")}
             >
               <div className="absolute inset-0 border border-gray-600 bg-gray-900/20 transition-all duration-300 group-hover:border-white group-hover:shadow-lg group-hover:shadow-white/20"></div>
               <div className="relative border border-gray-400 bg-transparent text-white font-medium px-6 py-2 text-sm transition-all duration-300 group-hover:border-white group-hover:bg-gray-900/30 transform translate-x-0.5 translate-y-0.5 group-hover:translate-x-0 group-hover:translate-y-0">
@@ -273,21 +269,20 @@ export default function TerminalIDE() {
             </div>
 
             <h1 className="text-4xl lg:text-6xl font-bold mb-6 leading-tight">
-              Built to help you <span className="text-gray-400 animate-pulse">ship</span>,
+              Built to help you <span className="text-gray-400 animate-pulse">quantify</span>,
               <br />
-              right from your{" "}
-              <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">terminal</span>.
+              and manage <span className="bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">financial risk</span>.
             </h1>
 
             <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mx-auto mb-8">
-              Use it in your IDE or any terminal. Same commands, any environment. Plug into your setup anywhere. Full
-              control from your terminal.
+              A powerful Rust-based library for quantitative risk management. Calculate VaR, run Monte Carlo simulations, 
+              and analyze portfolio risk directly from your terminal.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
               <div
                 className="group relative cursor-pointer w-full sm:w-auto"
-                onClick={() => copyToClipboard("npm install -g hexa-cli", "hero-install")}
+                onClick={() => copyToClipboard("cargo install rivar", "hero-install")}
               >
                 <div className="absolute inset-0 border border-gray-600 bg-gray-900/20 transition-all duration-300 group-hover:border-white group-hover:shadow-lg group-hover:shadow-white/20"></div>
                 <div className="relative border border-white bg-white text-black font-bold px-6 sm:px-10 py-4 text-base sm:text-lg transition-all duration-300 group-hover:bg-gray-100 group-hover:text-black transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 text-center">
@@ -298,12 +293,12 @@ export default function TerminalIDE() {
                       <Copy className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
                     )}
                     <span className="text-gray-600 text-sm sm:text-base">$</span>
-                    <span className="text-sm sm:text-base">npm install -g hexa-cli</span>
+                    <span className="text-sm sm:text-base">cargo install rivar</span>
                   </div>
                 </div>
               </div>
 
-              <a href="/docs" className="group relative cursor-pointer w-full sm:w-auto">
+              <a href="https://docs.rivar.dev" target="_blank" rel="noopener noreferrer" className="group relative cursor-pointer w-full sm:w-auto">
                 <div className="absolute inset-0 border-2 border-dashed border-gray-600 bg-gray-900/20 transition-all duration-300 group-hover:border-white group-hover:shadow-lg group-hover:shadow-white/20"></div>
                 <div className="relative border-2 border-dashed border-gray-400 bg-transparent text-white font-bold px-10 py-4 text-lg transition-all duration-300 group-hover:border-white group-hover:bg-gray-900/30 transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0">
                   <div className="flex items-center gap-3">
@@ -325,7 +320,7 @@ export default function TerminalIDE() {
                     <div className="w-3 h-3 bg-yellow-500 hover:bg-yellow-400 transition-colors cursor-pointer"></div>
                     <div className="w-3 h-3 bg-green-500 hover:bg-green-400 transition-colors cursor-pointer"></div>
                   </div>
-                  <span className="text-gray-400 text-sm">hexa-terminal</span>
+                  <span className="text-gray-400 text-sm">rivar-terminal</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -346,9 +341,9 @@ export default function TerminalIDE() {
 
                   {!isExecuting && (
                     <div className="text-white">
-                      <span className="text-green-400">user@dev</span>
+                      <span className="text-green-400">risk@quant</span>
                       <span className="text-gray-500">:</span>
-                      <span className="text-blue-400">~/project</span>
+                      <span className="text-blue-400">~/portfolio</span>
                       <span className="text-white">$ </span>
                       <span className="text-white">{currentTyping}</span>
                       <span className={`text-white ${showCursor ? "opacity-100" : "opacity-0"} transition-opacity`}>
@@ -381,7 +376,7 @@ export default function TerminalIDE() {
                     <span className="text-white">{currentCommand + 1}</span>
                   </div>
                   <div className="flex items-center gap-4">
-                    <span className="text-gray-500">AI Models:</span>
+                    <span className="text-gray-500">Risk Models:</span>
                     <span className="text-gray-500">Active</span>
                   </div>
                   <div className="flex items-center gap-4">
@@ -399,9 +394,9 @@ export default function TerminalIDE() {
       <section className="px-6 py-16 lg:px-12 border-t border-gray-800" id="integrations">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Universal IDE Support</h2>
+            <h2 className="text-3xl lg:text-4xl font-bold mb-4">Data Provider Integration</h2>
             <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-              HEXA CLI works everywhere. One installation, infinite possibilities.
+              Connect to leading market data providers. One tool, infinite data sources.
             </p>
           </div>
 
@@ -414,38 +409,38 @@ export default function TerminalIDE() {
                     <div className="w-3 h-3 bg-yellow-500"></div>
                     <div className="w-3 h-3 bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-sm">hexa-cli ide --list</span>
+                  <span className="text-gray-400 text-sm">rivar data --sources</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-gray-500 text-xs">ALL SUPPORTED</span>
+                  <span className="text-gray-500 text-xs">ALL CONNECTED</span>
                 </div>
               </div>
 
               <div className="p-6 bg-black">
-                <div className="text-sm text-gray-400 mb-4">$ hexa-cli ide --scan</div>
+                <div className="text-sm text-gray-400 mb-4">$ rivar data --scan</div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4 font-mono text-sm mb-6">
                   {[
-                    { name: "cursor", status: "✓", desc: "AI-powered editor" },
-                    { name: "vscode", status: "✓", desc: "Microsoft VS Code" },
-                    { name: "jetbrains", status: "✓", desc: "IntelliJ family" },
-                    { name: "android-studio", status: "✓", desc: "Android development" },
-                    { name: "vim/neovim", status: "✓", desc: "Terminal editors" },
-                    { name: "intellij", status: "✓", desc: "Java development" },
-                  ].map((ide) => (
+                    { name: "Bloomberg", status: "✓", desc: "Enterprise market data" },
+                    { name: "Reuters", status: "✓", desc: "Financial news & data" },
+                    { name: "Alpaca", status: "✓", desc: "Commission-free trading" },
+                    { name: "Yahoo Finance", status: "✓", desc: "Free market data" },
+                    { name: "Polygon.io", status: "✓", desc: "Real-time market data" },
+                    { name: "Interactive Brokers", status: "✓", desc: "Broker integration" },
+                  ].map((source) => (
                     <div
-                      key={ide.name}
+                      key={source.name}
                       className="flex items-center justify-between py-2 px-3 hover:bg-gray-900 cursor-pointer group transition-all duration-200 border border-transparent hover:border-gray-700"
                     >
                       <div className="flex items-center gap-3">
                         <span className="text-green-400 group-hover:text-white transition-colors w-4">
-                          {ide.status}
+                          {source.status}
                         </span>
-                        <span className="text-white group-hover:text-gray-200 transition-colors">{ide.name}</span>
+                        <span className="text-white group-hover:text-gray-200 transition-colors">{source.name}</span>
                       </div>
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-500 text-xs">
-                        {ide.desc}
+                        {source.desc}
                       </div>
                     </div>
                   ))}
@@ -455,8 +450,8 @@ export default function TerminalIDE() {
                   <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                     <div className="text-sm text-gray-400">
                       <div className="font-mono text-xs text-gray-500 space-y-1">
-                        <div>$ hexa-cli ide --install-all # Setup all IDEs</div>
-                        <div>$ hexa-cli ide --status # Check integration</div>
+                        <div>$ rivar data --connect alpaca # Connect Alpaca</div>
+                        <div>$ rivar data --sync # Sync all data</div>
                       </div>
                     </div>
 
@@ -467,7 +462,7 @@ export default function TerminalIDE() {
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span>Zero config</span>
+                        <span>Real-time</span>
                       </div>
                     </div>
                   </div>
@@ -489,8 +484,8 @@ export default function TerminalIDE() {
       <section className="px-6 py-20 lg:px-12 border-t border-gray-800" id="models">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Latest AI Models</h2>
-            <p className="text-xl text-gray-400">Select your preferred AI model from the terminal</p>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Risk Models</h2>
+            <p className="text-xl text-gray-400">Industry-standard risk metrics at your fingertips</p>
           </div>
 
           <div className="max-w-4xl mx-auto">
@@ -502,7 +497,7 @@ export default function TerminalIDE() {
                     <div className="w-3 h-3 bg-yellow-500"></div>
                     <div className="w-3 h-3 bg-green-500"></div>
                   </div>
-                  <span className="text-gray-400 text-sm">hexa-cli model select</span>
+                  <span className="text-gray-400 text-sm">rivar model --list</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
@@ -511,16 +506,16 @@ export default function TerminalIDE() {
               </div>
 
               <div className="p-6 bg-black">
-                <div className="text-sm text-gray-400 mb-4">$ hexa-cli model --list</div>
+                <div className="text-sm text-gray-400 mb-4">$ rivar model --list</div>
 
                 <div className="space-y-2 font-mono text-sm">
                   {[
-                    { id: "1", name: "gpt-5", provider: "openai", status: "●", color: "text-green-400" },
-                    { id: "2", name: "claude-4-sonnet", provider: "anthropic", status: "●", color: "text-green-400" },
-                    { id: "3", name: "claude-4.1-opus", provider: "anthropic", status: "●", color: "text-green-400" },
-                    { id: "4", name: "o3", provider: "openai", status: "●", color: "text-green-400" },
-                    { id: "5", name: "gemini-2.5-pro", provider: "google", status: "●", color: "text-green-400" },
-                    { id: "6", name: "grok-4", provider: "xai", status: "●", color: "text-green-400" },
+                    { id: "1", name: "VaR", provider: "Parametric", status: "●", color: "text-green-400", desc: "Value at Risk" },
+                    { id: "2", name: "CVaR", provider: "Conditional", status: "●", color: "text-green-400", desc: "Conditional VaR (ES)" },
+                    { id: "3", name: "Monte Carlo", provider: "Simulation", status: "●", color: "text-green-400", desc: "MC simulation" },
+                    { id: "4", name: "Historical", provider: "Backtest", status: "●", color: "text-green-400", desc: "Historical simulation" },
+                    { id: "5", name: "GARCH", provider: "Volatility", status: "●", color: "text-green-400", desc: "Volatility modeling" },
+                    { id: "6", name: "Factor", provider: "Regression", status: "●", color: "text-green-400", desc: "Factor risk model" },
                   ].map((model) => (
                     <div
                       key={model.id}
@@ -535,7 +530,7 @@ export default function TerminalIDE() {
                         <span className="text-gray-500 text-xs">({model.provider})</span>
                       </div>
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-500 text-xs">
-                        Press {model.id} to select
+                        {model.desc}
                       </div>
                     </div>
                   ))}
@@ -546,24 +541,24 @@ export default function TerminalIDE() {
                     <div className="text-sm text-gray-400">
                       <div className="mb-2">Usage:</div>
                       <div className="font-mono text-xs text-gray-500 space-y-1">
-                        <div>$ hexa-cli generate --model gpt-5 "Create a React component"</div>
-                        <div>$ hexa-cli model set claude-4-sonnet # Set as default</div>
-                        <div>$ hexa-cli model status # Check model availability</div>
+                        <div>$ rivar calculate --VaR --confidence 0.95</div>
+                        <div>$ rivar calculate --CVaR --horizon 10d</div>
+                        <div>$ rivar backtest --strategy my-strategy</div>
                       </div>
                     </div>
 
                     <div className="flex items-center gap-6 text-xs text-gray-500">
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span>4 Active</span>
+                        <span>6 Active</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                        <span>2 Pending</span>
+                        <span>0 Pending</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-gray-500 rounded-full animate-pulse"></div>
-                        <span>Auto-sync enabled</span>
+                        <span>Real-time</span>
                       </div>
                     </div>
                   </div>
@@ -574,20 +569,20 @@ export default function TerminalIDE() {
             <div className="mt-6 text-center">
               <div className="inline-flex items-center gap-2 text-gray-400 text-sm">
                 <span className="text-green-400">●</span>
-                <span>Models auto-updated • Zero configuration required</span>
+                <span>Industry-standard models • Zero configuration required</span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="px-6 py-20 lg:px-12 border-t border-gray-800 bg-gray-950/30" id="docs">
+      <section className="px-6 py-20 lg:px-12 border-t border-gray-800 bg-gray-950/30">
         <div className="max-w-5xl mx-auto text-center">
           <div className="mb-12">
-            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to ship faster?</h2>
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">Ready to quantify risk?</h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Write powerful scripts and automations. Automatically update docs, trigger security reviews, or build
-              custom coding agents.
+              Build powerful risk models and simulations. Calculate VaR, run Monte Carlo simulations, 
+              or analyze portfolio exposures in real-time.
             </p>
           </div>
 
@@ -600,18 +595,18 @@ export default function TerminalIDE() {
                     <div className="w-12 h-12 mx-auto mb-4 bg-gray-900 border border-gray-600 flex items-center justify-center group-hover:border-white transition-colors group-hover:bg-gray-800">
                       <span className="text-lg font-mono text-white group-hover:text-gray-100">01</span>
                     </div>
-                    <h3 className="text-lg font-bold mb-3 text-white group-hover:text-gray-100">Initialize</h3>
+                    <h3 className="text-lg font-bold mb-3 text-white group-hover:text-gray-100">Calculate VaR</h3>
                     <p className="text-gray-400 mb-4 group-hover:text-gray-300 text-sm leading-relaxed">
-                      Start new AI-powered projects with zero configuration
+                      Compute Value at Risk using parametric, historical, or Monte Carlo methods
                     </p>
                   </div>
                   <div
                     className="bg-gray-900 border border-gray-700 p-2.5 font-mono text-xs text-left group-hover:border-gray-500 transition-colors group-hover:bg-gray-800 cursor-pointer flex items-center justify-between"
-                    onClick={() => copyToClipboard("hexa-cli init", "init-cmd")}
+                    onClick={() => copyToClipboard("rivar calculate --VaR --confidence 0.95", "init-cmd")}
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-gray-500">$ </span>
-                      <span className="text-white group-hover:text-gray-100">hexa-cli init</span>
+                      <span className="text-white group-hover:text-gray-100">rivar calculate --VaR</span>
                     </div>
                     {copiedStates["init-cmd"] ? (
                       <Check className="w-3 h-3 text-green-400" />
@@ -631,18 +626,18 @@ export default function TerminalIDE() {
                     <div className="w-12 h-12 mx-auto mb-4 bg-gray-900 border border-gray-600 flex items-center justify-center group-hover:border-white transition-colors group-hover:bg-gray-800">
                       <span className="text-lg font-mono text-white group-hover:text-gray-100">02</span>
                     </div>
-                    <h3 className="text-lg font-bold mb-3 text-white group-hover:text-gray-100">Generate</h3>
+                    <h3 className="text-lg font-bold mb-3 text-white group-hover:text-gray-100">Backtest</h3>
                     <p className="text-gray-400 mb-4 group-hover:text-gray-300 text-sm leading-relaxed">
-                      Create code with cutting-edge AI models instantly
+                      Test trading strategies against historical data with detailed metrics
                     </p>
                   </div>
                   <div
                     className="bg-gray-900 border border-gray-700 p-2.5 font-mono text-xs text-left group-hover:border-gray-500 transition-colors group-hover:bg-gray-800 cursor-pointer flex items-center justify-between"
-                    onClick={() => copyToClipboard("hexa-cli generate", "generate-cmd")}
+                    onClick={() => copyToClipboard("rivar backtest --strategy my-strategy", "generate-cmd")}
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-gray-500">$ </span>
-                      <span className="text-white group-hover:text-gray-100">hexa-cli generate</span>
+                      <span className="text-white group-hover:text-gray-100">rivar backtest</span>
                     </div>
                     {copiedStates["generate-cmd"] ? (
                       <Check className="w-3 h-3 text-green-400" />
@@ -662,18 +657,18 @@ export default function TerminalIDE() {
                     <div className="w-12 h-12 mx-auto mb-4 bg-gray-900 border border-gray-600 flex items-center justify-center group-hover:border-white transition-colors group-hover:bg-gray-800">
                       <span className="text-lg font-mono text-white group-hover:text-gray-100">03</span>
                     </div>
-                    <h3 className="text-lg font-bold mb-3 text-white group-hover:text-gray-100">Deploy</h3>
+                    <h3 className="text-lg font-bold mb-3 text-white group-hover:text-gray-100">Analyze</h3>
                     <p className="text-gray-400 mb-4 group-hover:text-gray-300 text-sm leading-relaxed">
-                      Ship to production with automated optimization
+                      Comprehensive portfolio analysis with factor exposures and stress tests
                     </p>
                   </div>
                   <div
                     className="bg-gray-900 border border-gray-700 p-2.5 font-mono text-xs text-left group-hover:border-gray-500 transition-colors group-hover:bg-gray-800 cursor-pointer flex items-center justify-between"
-                    onClick={() => copyToClipboard("hexa-cli deploy", "deploy-cmd")}
+                    onClick={() => copyToClipboard("rivar analyze --portfolio holdings.json", "deploy-cmd")}
                   >
                     <div className="flex items-center gap-2">
                       <span className="text-gray-500">$ </span>
-                      <span className="text-white group-hover:text-gray-100">hexa-cli deploy</span>
+                      <span className="text-white group-hover:text-gray-100">rivar analyze</span>
                     </div>
                     {copiedStates["deploy-cmd"] ? (
                       <Check className="w-3 h-3 text-green-400" />
@@ -687,7 +682,7 @@ export default function TerminalIDE() {
           </div>
 
           <div className="space-y-6">
-            <div className="group relative cursor-pointer inline-block w-full sm:w-auto">
+            <a href="https://docs.rivar.dev" target="_blank" rel="noopener noreferrer" className="group relative cursor-pointer inline-block w-full sm:w-auto">
               <div className="absolute inset-0 border-2 border-gray-600 bg-gray-900/20 transition-all duration-300 group-hover:border-white group-hover:shadow-lg group-hover:shadow-white/20"></div>
               <div className="relative border-2 border-white bg-white text-black font-bold px-8 sm:px-16 py-4 sm:py-5 text-lg sm:text-xl transition-all duration-300 group-hover:bg-gray-100 group-hover:text-black transform translate-x-2 translate-y-2 group-hover:translate-x-0 group-hover:translate-y-0 text-center">
                 <div className="flex items-center justify-center gap-2 sm:gap-3">
@@ -695,18 +690,18 @@ export default function TerminalIDE() {
                   <span className="text-base sm:text-lg">Get Started Now</span>
                 </div>
               </div>
-            </div>
+            </a>
 
             <div
               className="text-gray-400 text-base sm:text-lg font-mono hover:text-white transition-colors cursor-pointer flex items-center justify-center gap-2 sm:gap-3 px-4 py-2 hover:bg-gray-900/30 rounded-none border border-transparent hover:border-gray-700"
-              onClick={() => copyToClipboard("npm install -g hexa-cli", "bottom-install")}
+              onClick={() => copyToClipboard("cargo install rivar", "bottom-install")}
             >
               {copiedStates["bottom-install"] ? (
                 <Check className="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" />
               ) : (
                 <Copy className="w-4 h-4 sm:w-5 sm:h-5 text-gray-400 hover:text-white transition-colors flex-shrink-0" />
               )}
-              <span className="break-all sm:break-normal">$ npm install -g hexa-cli</span>
+              <span className="break-all sm:break-normal">$ cargo install rivar</span>
             </div>
           </div>
         </div>
@@ -716,8 +711,8 @@ export default function TerminalIDE() {
       <footer className="border-t border-gray-800 px-6 py-12 lg:px-12 bg-gray-950">
         <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <div className="text-gray-600 text-lg mb-4">Built for developers, by developers.</div>
-            <div className="text-gray-700 text-sm">© 2025 HEXA CLI. Ship faster. Code better.</div>
+            <div className="text-gray-600 text-lg mb-4">Built for quants, by quants.</div>
+            <div className="text-gray-700 text-sm">© 2025 RiVaR. Quantify risk. Manage better.</div>
           </div>
         </div>
       </footer>
