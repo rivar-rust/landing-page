@@ -37,37 +37,37 @@ export default function TerminalIDE() {
     {
       command: "rivar init --template risk-model",
       outputs: [
-        "🚀 Initializing RiVaR project...",
-        "📦 Loading risk models...",
-        "⚙️ Configuring portfolio parameters...",
-        "✅ Project initialized successfully!",
+        "Initializing RiVaR project...",
+        "Loading risk models...",
+        "Configuring portfolio parameters...",
+        "Project initialized successfully!",
       ],
     },
     {
       command: "rivar calculate --VaR --confidence 0.95",
       outputs: [
-        "📊 Loading historical data...",
-        "🔢 Computing variance-covariance matrix...",
+        "Loading historical data...",
+        "Computing variance-covariance matrix...",
         "⚡ Calculating Value at Risk...",
-        "✨ VaR: $2.45M (95% confidence)",
+        "VaR: $2.45M (95% confidence)",
       ],
     },
     {
       command: "rivar backtest --strategy my-strategy",
       outputs: [
-        "📈 Loading historical prices...",
-        "🔍 Running backtest simulation...",
-        "📉 Computing performance metrics...",
-        "🎯 Sharpe Ratio: 1.82 | Max Drawdown: -12.3%",
+        "Loading historical prices...",
+        "Running backtest simulation...",
+        "Computing performance metrics...",
+        "Sharpe Ratio: 1.82 | Max Drawdown: -12.3%",
       ],
     },
     {
       command: "rivar analyze --portfolio holdings.json",
       outputs: [
-        "💼 Analyzing portfolio composition...",
-        "📊 Computing factor exposures...",
-        "⚠️ Identifying risk concentrations...",
-        "✨ Risk report generated!",
+        "Analyzing portfolio composition...",
+        "Computing factor exposures...",
+        "Identifying risk concentrations...",
+        "Risk report generated!",
       ],
     },
   ]
