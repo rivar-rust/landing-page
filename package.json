@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "preview": "opennextjs-cloudflare build && wrangler dev",
-    "deploy": "opennextjs-cloudflare build && wrangler deploy"
+    "preview": "cloudflare && wrangler dev",
+    "deploy": "cloudflare && wrangler deploy"  
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
