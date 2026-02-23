@@ -3,7 +3,7 @@
 
 A powerful Rust-based library for quantitative risk management. Calculate VaR, run Monte Carlo simulations, and analyze portfolio risk directly from your terminal.
 
---
+---
 
 ## Install
 
