@@ -1,7 +1,4 @@
-<div align: center>
-  ![Title](screenshot.png)
-</div>
-
+![RIVAR banner](assets/rivar.png)
 # Built to help you quantify, and manage financial risk.
 
 A powerful Rust-based library for quantitative risk management. Calculate VaR, run Monte Carlo simulations, and analyze portfolio risk directly from your terminal.
